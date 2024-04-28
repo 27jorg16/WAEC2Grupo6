@@ -27,7 +27,8 @@ public class LoginController {
     public String validarLogin(@ModelAttribute("usuario") Usuario usuario,
                                Model model,
                                @RequestParam("nomusuario") String nomusuario,
-                               @RequestParam("password") String password) {
+                               @RequestParam("password") String password,
+                               BindingResult bindingResult) {
         if(iUsuarioService.findUserByNomUsuario(nomusuario).equals(nomusuario) &&
            iUsuarioService.findUserByPassword(password).equals(password)){
             model.addAttribute("mensaje","BIENVENIDO: " + usuario.getNomusuario());
@@ -80,7 +81,4 @@ public class LoginController {
         return "redirect:/auth/frmlogin";
     }
 
-    public String validarPassword(){
-
-    }
 }
